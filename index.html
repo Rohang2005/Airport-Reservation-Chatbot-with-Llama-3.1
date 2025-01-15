@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbot Chatbot</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #E9F0FB;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #4169E1;
+            padding: 15px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: white;
+        }
+        .navbar ul {
+            display: flex;
+            list-style-type: none;
+        }
+        .navbar ul li {
+            margin: 0 10px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        .navbar ul li a:hover {
+            color: #ff88a7;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            background-color: #f5faff;
+        }
+        .chat-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .chat-container h2 {
+            color: #4169E1;
+        }
+        .chatbox {
+            margin-top: 10px;
+        }
+        .chatbox textarea {
+            width: 50%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .chatbox input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4169E1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chatbox input[type="submit"]:hover {
+            background-color: #365ab5;
+        }
+        .response {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Home</div>
+        <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Issues</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Airbot</a></li>
+        </ul>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div class="chat-container">
+        <h2>Talk to Airbot</h2>
+
+        <form method="POST" action="/chat" class="chatbox">
+            <textarea name="message" placeholder="Type your message here..."></textarea><br>
+            <input type="submit" value="Send">
+        </form>
+
+        <!-- Displaying chatbot responses -->
+        {% if user_message %}
+        <div class="response">
+            <p><strong>You:</strong> {{ user_message }}</p>
+            <p><strong>Airbot:</strong> {{ bot_response }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
